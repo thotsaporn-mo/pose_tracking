@@ -13,8 +13,6 @@ import math
 # import PoseModule as pm
 
 cap = cv2.VideoCapture("trx_workout/trx_push_ups.mp4")
-# cap = cv2.VideoCapture('trx_workout/trx_side_plank_raises_back.mp4')
-
 # cap = cv2.VideoCapture(0)
 
 
@@ -31,12 +29,14 @@ cap.set(3, 1280)
 cap.set(4, 720)
 w = cap.get(cv2.CAP_PROP_FRAME_WIDTH);
 h = cap.get(cv2.CAP_PROP_FRAME_HEIGHT);
-
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
 out = cv2.VideoWriter('trainer.avi', fourcc, 20, (int(w),  int(h)))       # (1280,  720)
 
+
+
 with mpPose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as pose:
-    while cap.grab():                       # Check whether the next frame is none
+    while cap.grab():                       # Check whether the next frame is none 
+                                            # if capture from camera change to cap.open()
         
         success, img = cap.read()
         # img = cv2.resize(img, (1280, 720))
@@ -57,6 +57,7 @@ with mpPose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as p
 # =========================== OR ==============================================     
         # black_img = np.zeros(img.shape, dtype=np.uint8)
 # =============================================================================
+    
     
         if results.pose_landmarks:
             # img = black_img             # comment this if you want original frame
