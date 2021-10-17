@@ -10,7 +10,7 @@ import numpy as np
 import mediapipe as mp
 import math
 
-# import PoseModule as pm
+
 
 cap = cv2.VideoCapture("trx_workout/trx_push_ups.mp4")
 # cap = cv2.VideoCapture(0)
